@@ -94,41 +94,50 @@ public class AddRecipePage extends JFrame{
 					if(newRecipe.getType() == "Starter") {
 						Main.bstStarter.insert(newRecipe);
 						Main.bstStarter.inorderTraversal();
+						newRecipe.setId(Main.bstStarter.getSize());
 						try {
 						FileWriter writer = new FileWriter("saveStarter.txt", true);
-						writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ "\r\n");
+						writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ " = " +newRecipe.getId()+ "\r\n");
 						writer.close();
 						}
 					catch(IOException e) {
 							e.printStackTrace();
 						}
+						System.out.println("id:" + newRecipe.getId() + "\r\n");
+
 						
 					} 
 					
 					else if(newRecipe.getType() == "Main Meal") {
 						Main.bstMainMeal.insert(newRecipe);
 						Main.bstMainMeal.inorderTraversal();
+						newRecipe.setId(Main.bstMainMeal.getSize());
 							try {
 							FileWriter writer = new FileWriter("saveMainMeal.txt", true);
-							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ "\r\n");
+							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ " = " +newRecipe.getId()+ "\r\n");
 							writer.close();
 							}
 						catch(IOException e) {
 								e.printStackTrace();
 							}
+							System.out.println("id:" + newRecipe.getId() + "\r\n");
+
 					}
 					else {
 						if(newRecipe.getType() == "Dessert") {
 							Main.bstDessert.insert(newRecipe);
 							Main.bstDessert.inorderTraversal();
+							newRecipe.setId(Main.bstDessert.getSize());
 							try {
 							FileWriter writer = new FileWriter("saveDessert.txt", true);
-							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ "\r\n");
+							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ " = " +newRecipe.getId()+ "\r\n");
 							writer.close();
 							}
 						catch(IOException e) {
 								e.printStackTrace();
 							}
+							
+							System.out.println("id:" + newRecipe.getId() + "\r\n");
 						}
 					}
 					

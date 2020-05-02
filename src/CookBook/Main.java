@@ -39,6 +39,7 @@ public class Main {
 				
 			}
 			fileReader.close();
+			System.out.println("starter:");
 			bstStarter.inorderTraversal();
 			
 			
@@ -68,6 +69,7 @@ public class Main {
 				
 			}
 			fileReader.close();
+			System.out.println("main meal");
 			bstMainMeal.inorderTraversal();
 			
 			
@@ -95,6 +97,7 @@ public class Main {
 				
 			}
 			fileReader.close();
+			System.out.println("dessert");
 			bstDessert.inorderTraversal();
 			
 			

@@ -2,6 +2,7 @@ package CookBook;
 
 public class Recipe {
 	
+	private int id;
 	private String type;
 	private String name;
 	private String recipe;
@@ -15,7 +16,7 @@ public class Recipe {
 	}
 	
 	Recipe(){
-		
+		super();
 	}
 	
 
@@ -41,6 +42,14 @@ public class Recipe {
 	
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

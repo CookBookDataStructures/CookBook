@@ -42,15 +42,25 @@ public class RecipeTree {
 	 * 
 	 * }
 	 * 
-	 * public boolean search(int e) { TreeNode current = root; while(current !=
-	 * null) { if(e < current.getElement()) current = current.getLeft(); else if(e >
-	 * current.getElement()) current = current.getRight(); else return true; }
-	 * return false; }
-	 * 
-	 * 
+	 public boolean search(int e) { TreeNode current = root; while(current !=
+	 null) { if(e < current.getElement()) current = current.getLeft(); else if(e >
+	 current.getElement()) current = current.getRight(); else return true; }
+	  return false; }
+	  
+	 
 	 */
+	 /*  
+	   public boolean search(int e) { 
+		   TreeNode current = root; 
+		   while(current != null) { 
+			   if(e != current.getElement().getId()) 
+				   current = current.getLeft(); 
+			   else if(e > current.getElement()) 
+				   current = current.getRight(); 
+			   else return true; }
+				  return false; }
 
-
+*/
 }
 
 

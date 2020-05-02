@@ -21,14 +21,21 @@ import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 
 public class CreateMenuPage extends JFrame{
+	
+	JTextArea textAreaStarter = new JTextArea();
+	JTextArea textAreaDessert = new JTextArea();
+	JTextArea textAreaMain = new JTextArea();
+	
+	JButton btnChangeStarter = new JButton("Change it");
+	
+	
 	public CreateMenuPage() {
-		
-		Main.bstDessert.inorderTraversal();
-		
+				
 		Recipe recipeStarter = new Recipe("aa","ss","ff");
 		Recipe recipeMainMeal = new Recipe("dd", "dd", "d");
 		Recipe recipeDessert = new Recipe("j","j","j");
@@ -42,15 +49,13 @@ public class CreateMenuPage extends JFrame{
 		getContentPane().setLayout(null);
 		
 		TitledBorder titleStarter = new TitledBorder("Starter:");
-		JTextArea textAreaStarter = new JTextArea();
+		//JTextArea textAreaStarter = new JTextArea();
 		textAreaStarter.setBounds(131, 81, 138, 218);
 		getContentPane().add(textAreaStarter);
 		textAreaStarter.setBorder(titleStarter);
 		
-		
-		
 		TitledBorder titleDessert = new TitledBorder("Dessert:");
-		JTextArea textAreaDessert = new JTextArea();
+		//JTextArea textAreaDessert = new JTextArea();
 		textAreaDessert.setBounds(501, 81, 138, 218);
 		getContentPane().add(textAreaDessert);
 		textAreaDessert.setBorder(titleDessert);
@@ -60,14 +65,13 @@ public class CreateMenuPage extends JFrame{
 		textAreaDessert.append(recipeDessert.getName() + recipeDessert.getRecipe());
 		Main.bstDessert.inorderTraversal();
 		
-		
 		TitledBorder titleMain = new TitledBorder("Main Meal:");
-		JTextArea textAreaMain = new JTextArea();
+		//JTextArea textAreaMain = new JTextArea();
 		textAreaMain.setBounds(321, 81, 138, 218);
 		getContentPane().add(textAreaMain);
 		textAreaMain.setBorder(titleMain);
 		
-		JButton btnChangeStarter = new JButton("Change it");
+		//JButton btnChangeStarter = new JButton("Change it");
 		btnChangeStarter.setBackground(new Color(255, 250, 205));
 		btnChangeStarter.setBounds(141, 49, 115, 29);
 		getContentPane().add(btnChangeStarter);
@@ -156,12 +160,29 @@ public class CreateMenuPage extends JFrame{
 		btnGoBack.setBounds(11, 16, 115, 51);
 		getContentPane().add(btnGoBack);
 		
+		textAreaStarter.setText ("");
+		textAreaDessert.setText("");
+		textAreaMain.setText("");
 		
-		
-		
-		
-	    
 	    
 	    
 	}
+	private void changeStarter() {
+		Random rand = new Random(); 
+		int rand_int1 = rand.nextInt(2);
+		System.out.print(rand_int1);
+		
+		//Main.bstStarter.find(rand_int1);
+		textAreaStarter.append("");
+		
+//			if(rand_int1 == AddRecipePage.bst1.getRoot().recipe.getId()) {
+//				System.out.print(AddRecipePage.bst1.getRoot().recipe.getName());
+//				System.out.print(rand_int1);
+//			}
+	
+		
+		//System.out.print(AddRecipePage.bst1.getSize() + "\r\n");
+	}
+	
+	
 }
