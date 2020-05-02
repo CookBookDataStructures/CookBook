@@ -176,23 +176,5 @@ public class AddRecipePage extends JFrame{
 		
 	}
 	
-	private void addNewRecipe() {
-		
-		Recipe recipe = new Recipe(txtRecipeName.getText(), txtRecipe.getText(), cmbRecipeType.getSelectedItem().toString() );
-		if(cmbRecipeType.getSelectedItem().toString() == "Starter") {
-			 Main.bstStarter.insert(recipe);
-		}
-		
-		else if(cmbRecipeType.getSelectedItem().toString() == "Main Meal") {
-			Main.bstMainMeal.insert(recipe);
-			
-		}
-		else if(cmbRecipeType.getSelectedItem().toString() == "Dessert") {
-			Main.bstDessert.insert(recipe);
-		}
-		
-		
-
-	}
 
 }
