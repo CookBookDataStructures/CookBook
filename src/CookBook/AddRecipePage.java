@@ -86,6 +86,7 @@ public class AddRecipePage extends JFrame{
 		JButton btnAddRecipe = new JButton("ADD!");
 		btnAddRecipe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Recipe newRecipe = new Recipe(txtRecipeName.getText(), txtRecipe.getText(), cmbRecipeType.getSelectedItem().toString());
 				if(txtRecipeName.getText().isEmpty() ||
 						txtRecipe.getText().isEmpty() ||
 						cmbRecipeType.getSelectedIndex() == 0 ) {
@@ -93,12 +94,12 @@ public class AddRecipePage extends JFrame{
 					}
 						
 				else {
-					Recipe newRecipe = new Recipe(txtRecipeName.getText(), txtRecipe.getText(), cmbRecipeType.getSelectedItem().toString());
-					
 					if(newRecipe.getType() == "Starter") {
+						Main.bstStarter.insert(newRecipe);
+						Main.bstStarter.inorderTraversal();
 						try {
 						FileWriter writer = new FileWriter("saveStarter.txt", true);
-						writer.write(newRecipe.getName() + "-" +newRecipe.getRecipe()+ "-" + newRecipe.getType() + "\r\n");
+						writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ "\r\n");
 						writer.close();
 						}
 					catch(IOException e) {
@@ -107,41 +108,45 @@ public class AddRecipePage extends JFrame{
 						
 					} 
 					
-				else if(newRecipe.getType() == "Main Meal") {
-						try {
-						FileWriter writer = new FileWriter("saveMainMeal.txt", true);
-						writer.write(newRecipe.getName() + "-" +newRecipe.getRecipe()+ "-" + newRecipe.getType() + "\r\n");
-						writer.close();
-						}
-					catch(IOException e) {
-							e.printStackTrace();
-						}
-				}
-				else {
-					if(newRecipe.getType() == "Dessert") {
-						try {
-						FileWriter writer = new FileWriter("saveDessert.txt", true);
-						writer.write(newRecipe.getName() + "-" +newRecipe.getRecipe()+ "-" + newRecipe.getType() + "\r\n");
-						writer.close();
-						}
-					catch(IOException e) {
-							e.printStackTrace();
+					else if(newRecipe.getType() == "Main Meal") {
+						Main.bstMainMeal.insert(newRecipe);
+						Main.bstMainMeal.inorderTraversal();
+							try {
+							FileWriter writer = new FileWriter("saveMainMeal.txt", true);
+							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ "\r\n");
+							writer.close();
+							}
+						catch(IOException e) {
+								e.printStackTrace();
+							}
+					}
+					else {
+						if(newRecipe.getType() == "Dessert") {
+							Main.bstDessert.insert(newRecipe);
+							Main.bstDessert.inorderTraversal();
+							try {
+							FileWriter writer = new FileWriter("saveDessert.txt", true);
+							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ "\r\n");
+							writer.close();
+							}
+						catch(IOException e) {
+								e.printStackTrace();
+							}
 						}
 					}
-				}
 					
 				JOptionPane.showMessageDialog(null, "Recipe is added!");
 							
-					
+						
+			}
 				txtRecipeName.setText("");
 				txtRecipe.setText("");
-				cmbRecipeType.setSelectedIndex(0);		
-			}
-							
-				
-		}			
+				cmbRecipeType.setSelectedIndex(0);
+			}			
+			
 			
 		});
+		
 		
 		btnAddRecipe.setBackground(new Color(240, 255, 255));
 		btnAddRecipe.setBounds(336, 407, 111, 49);
