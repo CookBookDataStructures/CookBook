@@ -33,18 +33,12 @@ public class LikedLinkedList {
 		
 	}
 	
-	public void Insertion(Recipe value) {		
-		Node newNode = new Node(value);		
-		if(first == null){
-			first = newNode;
-		}else{
-			Node current = first;
-			while(current.getLink() != null){
-				current = current.link;
-			}
-			current.link = newNode;
-		}	
-	}
+	/*
+	 * public void Insertion(Recipe value) { Node newNode = new Node(value);
+	 * if(first == null){ first = newNode; }else{ Node current = first;
+	 * while(current.getLink() != null){ current = current.link; } current.link =
+	 * newNode; } }
+	 */
 	
 	public boolean removeSelected(String recipe) {
 		Node current = first;

@@ -35,31 +35,23 @@ public class LikedRecipePage extends JFrame{
 	setLocationRelativeTo(null);
 	getContentPane().setLayout(null);
 	
-	LikedLinkedList linkedList = new LikedLinkedList();
-	try {
-		FileReader reader = new FileReader("saveLiked.txt"); 
-		BufferedReader bReader = new BufferedReader(reader);
-		StringBuffer sBuffer = new StringBuffer();
-		String line;
-		while((line=bReader.readLine())!=null){
-			sBuffer.append(line);
-			Recipe r = new Recipe(line, line, line);
-			linkedList.insertAtFront(r);
-			sBuffer.append("\n");
-			
-		}
-		reader.close();
-		System.out.println(sBuffer.toString());
-		linkedList.outputList();
-		
-		
-	}
-	catch(IOException e) {
-		e.printStackTrace();
-	}
+		/*
+		 * LikedLinkedList linkedList = new LikedLinkedList(); try { FileReader reader =
+		 * new FileReader("saveLiked.txt"); BufferedReader bReader = new
+		 * BufferedReader(reader); StringBuffer sBuffer = new StringBuffer(); String
+		 * line; while((line=bReader.readLine())!=null){ sBuffer.append(line); Recipe r
+		 * = new Recipe(line, line, line); linkedList.insertAtFront(r);
+		 * sBuffer.append("\n");
+		 * 
+		 * } reader.close(); System.out.println(sBuffer.toString());
+		 * linkedList.outputList();
+		 * 
+		 * 
+		 * } catch(IOException e) { e.printStackTrace(); }
+		 */
 	
 	
-	JList list = new JList(linkedList.toList());
+	JList list = new JList(Main.likedList.toList());
 	list.setBounds(210, 72, 193, 213);
 	getContentPane().add(list);
 	list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -104,14 +96,6 @@ public class LikedRecipePage extends JFrame{
 		
 		
 	JButton btnDeleteRecipe = new JButton("Delete Recipe");
-	btnDeleteRecipe.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent arg0) {
-			linkedList.removeSelected(list.getSelectedValue().toString());
-			linkedList.outputList();
-		
-		}
-	});
-	
 	btnDeleteRecipe.setBackground(new Color(135, 206, 250));
 	btnDeleteRecipe.setBounds(440, 157, 140, 47);
 	getContentPane().add(btnDeleteRecipe);

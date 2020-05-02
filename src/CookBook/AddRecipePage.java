@@ -23,9 +23,6 @@ import java.awt.event.ActionEvent;
 
 public class AddRecipePage extends JFrame{
 	
-	BinarySearchTree bst1 = new BinarySearchTree();
-	BinarySearchTree bst2 = new BinarySearchTree();
-	BinarySearchTree bst3 = new BinarySearchTree();
 	
 	JTextField txtRecipeName = new JTextField();
 	JTextArea txtRecipe = new JTextArea();
@@ -147,7 +144,6 @@ public class AddRecipePage extends JFrame{
 			
 		});
 		
-		
 		btnAddRecipe.setBackground(new Color(240, 255, 255));
 		btnAddRecipe.setBounds(336, 407, 111, 49);
 		getContentPane().add(btnAddRecipe);
@@ -176,5 +172,4 @@ public class AddRecipePage extends JFrame{
 		
 	}
 	
-
-}
+	}

@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,11 +21,13 @@ import javax.swing.border.TitledBorder;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 
 public class CreateMenuPage extends JFrame{
-	
 	public CreateMenuPage() {
+		
+		Main.bstDessert.inorderTraversal();
 		
 		Recipe recipeStarter = new Recipe("aa","ss","ff");
 		Recipe recipeMainMeal = new Recipe("dd", "dd", "d");
@@ -44,11 +47,19 @@ public class CreateMenuPage extends JFrame{
 		getContentPane().add(textAreaStarter);
 		textAreaStarter.setBorder(titleStarter);
 		
+		
+		
 		TitledBorder titleDessert = new TitledBorder("Dessert:");
 		JTextArea textAreaDessert = new JTextArea();
 		textAreaDessert.setBounds(501, 81, 138, 218);
 		getContentPane().add(textAreaDessert);
 		textAreaDessert.setBorder(titleDessert);
+		
+		Vector<String> v = new Vector<String>(); 
+		JList<String> recipe = new JList<>(v);
+		textAreaDessert.append(recipeDessert.getName() + recipeDessert.getRecipe());
+		Main.bstDessert.inorderTraversal();
+		
 		
 		TitledBorder titleMain = new TitledBorder("Main Meal:");
 		JTextArea textAreaMain = new JTextArea();
@@ -74,6 +85,7 @@ public class CreateMenuPage extends JFrame{
 		JButton btnLikeStarter = new JButton("Like ");
 		btnLikeStarter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Main.likedList.insertAtFront(recipeStarter);
 				try {
 					FileWriter writer = new FileWriter("saveLiked.txt", true);
 					writer.write(recipeStarter.getName() + "\r\n");
@@ -92,6 +104,7 @@ public class CreateMenuPage extends JFrame{
 		JButton btnLikeMain = new JButton("Like ");
 		btnLikeMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Main.likedList.insertAtFront(recipeMainMeal);
 				try {
 					FileWriter writer = new FileWriter("saveLiked.txt", true);
 					writer.write(recipeMainMeal.getName() + "\r\n");
@@ -111,6 +124,7 @@ public class CreateMenuPage extends JFrame{
 		JButton btnLikeDessert = new JButton("Like ");
 		btnLikeDessert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Main.likedList.insertAtFront(recipeDessert);
 				try {
 					FileWriter writer = new FileWriter("saveLiked.txt", true);
 					writer.write(recipeDessert.getName() + "\r\n");
