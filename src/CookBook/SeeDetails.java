@@ -23,9 +23,9 @@ public class SeeDetails extends JFrame{
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				WelcomePage welcomeWindow = new WelcomePage();
+				LikedRecipePage likedWindow = new LikedRecipePage();
 				setVisible(false);
-				welcomeWindow.setVisible(true);
+				likedWindow.setVisible(true);
 			}
 		});
 		btnGoBack.setBounds(27, 72, 115, 47);

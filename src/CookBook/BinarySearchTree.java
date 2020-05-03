@@ -47,15 +47,12 @@ public class BinarySearchTree {
 	
 	public static Recipe search(RecipeTree root, String st)
     {
-	 
-	 System.out.println("RANDOM: " + st);
-        if(root == null) 
+	    if(root == null) 
         {
             return null;
         }
         else if(st.equals(root.recipe.getName().substring(0, 1)))
         {
-        	  System.out.println("sey helloooo");
             return root.recipe;
         }
         else 

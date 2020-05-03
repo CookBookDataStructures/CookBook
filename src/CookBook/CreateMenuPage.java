@@ -18,6 +18,8 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.DefaultCaret;
+
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;

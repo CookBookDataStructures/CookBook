@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
-
 public class Main {
 	
 	public static BinarySearchTree bstStarter = new BinarySearchTree();
@@ -39,9 +36,6 @@ public class Main {
 				
 			}
 			fileReader.close();
-			System.out.println("starter:");
-			bstStarter.inorderTraversal();
-			
 			
 		} catch (IOException e) {
            e.printStackTrace();
@@ -64,12 +58,8 @@ public class Main {
 					}
 					recipeMainMeal.setType("Main Meal");
 					bstMainMeal.insert(recipeMainMeal);
-				
 			}
 			fileReader.close();
-			System.out.println("main meal");
-			bstMainMeal.inorderTraversal();
-			
 			
 		} catch (IOException e1) {
            e1.printStackTrace();
@@ -95,9 +85,6 @@ public class Main {
 				
 			}
 			fileReader.close();
-			System.out.println("dessert");
-			bstDessert.inorderTraversal();
-			
 			
 		} catch (IOException e2) {
            e2.printStackTrace();
@@ -118,7 +105,6 @@ public class Main {
 					likedList.insertAtFront(recipe);
 				}
 				
-				likedList.outputList();
 			}fileReader.close();
 		}
 		catch(IOException e3) {
@@ -129,8 +115,6 @@ public class Main {
 	public static void main(String[] args) {
 		createTrees();
 		WelcomePage welcomePage = new WelcomePage();
-		
-
 		
 	}
 
