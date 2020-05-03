@@ -40,7 +40,6 @@ public class CreateMenuPage extends JFrame{
 	
 	public CreateMenuPage() {
 		
-		
 		Recipe recipeStarter = crs();
 		textAreaStarter.append(recipeStarter.getName() + "\n");
 		textAreaStarter.append(recipeStarter.getRecipe());
@@ -51,9 +50,6 @@ public class CreateMenuPage extends JFrame{
 		textAreaDessert.append(recipeDessert.getName()+ "\n");
 		textAreaDessert.append(recipeDessert.getRecipe());
 		
-;
-
-
 		
 		getContentPane().setBackground(new Color(255, 222, 173));
 		setTitle("Cook-Book");
@@ -68,23 +64,24 @@ public class CreateMenuPage extends JFrame{
 		getContentPane().add(textAreaStarter);
 		textAreaStarter.setBorder(titleStarter);
 		
-		
 		TitledBorder titleDessert = new TitledBorder("Dessert:");
 		textAreaDessert.setBounds(501, 81, 138, 218);
 		getContentPane().add(textAreaDessert);
 		textAreaDessert.setBorder(titleDessert);
-		
 		
 		TitledBorder titleMain = new TitledBorder("Main Meal:");
 		textAreaMain.setBounds(321, 81, 138, 218);
 		getContentPane().add(textAreaMain);
 		textAreaMain.setBorder(titleMain);
 		
-		
 		btnChangeStarter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				createRandomStarter();
-				changeStarter();
+				Recipe changedRecipe = crs();
+				recipeStarter.setName(changedRecipe.getName());
+				recipeStarter.setRecipe(changedRecipe.getRecipe());
+				textAreaStarter.setText("");
+				textAreaStarter.append(recipeStarter.getName() + "\n");
+				textAreaStarter.append(recipeStarter.getRecipe());
 			}
 		});
 		btnChangeStarter.setBackground(new Color(255, 250, 205));
@@ -94,8 +91,12 @@ public class CreateMenuPage extends JFrame{
 		
 		btnChangeDessert.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				createRandomDessert();
-				changeDessert();
+				Recipe changedRecipe = crd();
+				recipeDessert.setName(changedRecipe.getName());
+				recipeDessert.setRecipe(changedRecipe.getRecipe());
+				textAreaDessert.setText("");
+				textAreaDessert.append(recipeDessert.getName() + "\n");
+				textAreaDessert.append(recipeDessert.getRecipe());
 			}
 		});
 		btnChangeDessert.setBackground(new Color(255, 250, 205));
@@ -104,8 +105,12 @@ public class CreateMenuPage extends JFrame{
 		
 		btnChangeMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				createRandomMain();
-				changeMain();
+				Recipe changedRecipe = crm();
+				recipeMainMeal.setName(changedRecipe.getName());
+				recipeMainMeal.setRecipe(changedRecipe.getRecipe());
+				textAreaMain.setText("");
+				textAreaMain.append(recipeMainMeal.getName() + "\n");
+				textAreaMain.append(recipeMainMeal.getRecipe());
 			}
 		});
 		btnChangeMain.setBackground(new Color(255, 250, 205));
@@ -118,7 +123,7 @@ public class CreateMenuPage extends JFrame{
 			Main.likedList.insertAtFront(recipeStarter);
 				try {
 					FileWriter writer = new FileWriter("saveLiked.txt", true);
-					writer.write(recipeStarter.getName() + "=" + recipeStarter.getRecipe() + recipeStarter.getType() + "\r\n");
+					writer.write(recipeStarter.getName() + "=" + recipeStarter.getRecipe() + "=" + recipeStarter.getType() + "\r\n");
 					writer.close();
 				}
 				catch(IOException e) {
@@ -202,41 +207,12 @@ public class CreateMenuPage extends JFrame{
 		    }
 	        return s;
 		}
-	
-	private void createRandomStarter() {
-        
-        Recipe randomStarter = Main.bstStarter.search(Main.bstStarter.getRoot(), this.createRandomChar());
-       
-        if(randomStarter != null) { 
-        String recipeName = randomStarter.getName();
-        String recipe = randomStarter.getRecipe();
-        textAreaStarter.append(recipeName + "\n");
-        textAreaStarter.append(recipe + "\n");
-        }
-        
-        else
-        	createRandomStarter();	
-	}
 
-
-	private void createRandomMain() {
-        Recipe randomMain = Main.bstMainMeal.search(Main.bstMainMeal.getRoot(), this.createRandomChar());
-        if(randomMain != null) {
-	        String recipeName = randomMain.getName();
-	        String recipe = randomMain.getRecipe();
-	        textAreaMain.append(recipeName + "\n");
-	        textAreaMain.append(recipe + "\n");
-        }
-        else
-        	createRandomMain();	
-	}
-	
 	private Recipe crs() {
 		Recipe randomStarter = new Recipe();
 		do {
 			 randomStarter = Main.bstStarter.search(Main.bstStarter.getRoot(), this.createRandomChar());
 		}while(randomStarter == null);
-		
 		return randomStarter;
 	}
 	
@@ -245,7 +221,6 @@ public class CreateMenuPage extends JFrame{
 		do {
 			 randomMainMeal = Main.bstMainMeal.search(Main.bstMainMeal.getRoot(), this.createRandomChar());
 		}while(randomMainMeal == null);
-		
 		return randomMainMeal;
 	}
 	
@@ -257,38 +232,6 @@ public class CreateMenuPage extends JFrame{
 		
 		return randomDessertt;
 	}
-
-	
-	private void createRandomDessert() {
-        Recipe randomDessert = Main.bstDessert.search(Main.bstDessert.getRoot(), this.createRandomChar());
-        
-        if(randomDessert != null) {
-        	String recipeName = randomDessert.getName();
-            String recipe = randomDessert.getRecipe();
-        	textAreaDessert.append(recipeName + "\n");
-        	textAreaDessert.append(recipe + "\n");
-        	}
-        
-        else
-        	createRandomDessert();	
-   
-	}
-	
-	
-	private void changeStarter() {
-		textAreaStarter.setText("");
-		createRandomStarter();
-	}
-	
-	private void changeMain() {
-		textAreaMain.setText("");
-		createRandomMain();
-	}
-	private void changeDessert() {
-		textAreaDessert.setText("");
-		createRandomDessert();
-	}
-
 
 	
 }

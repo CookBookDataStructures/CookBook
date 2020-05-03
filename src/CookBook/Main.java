@@ -124,10 +124,7 @@ public class Main {
 		catch(IOException e3) {
 		  e3.printStackTrace();	
 		}
-	
 	}
-	
-	
 	
 	public static void main(String[] args) {
 		createTrees();
