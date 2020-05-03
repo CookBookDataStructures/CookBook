@@ -42,13 +42,13 @@ public class CreateMenuPage extends JFrame{
 	public CreateMenuPage() {
 		
 		Recipe recipeStarter = crs();
-		textAreaStarter.append(recipeStarter.getName() + "\n");
+		textAreaStarter.append(recipeStarter.getName().toUpperCase() + "\n");
 		textAreaStarter.append(recipeStarter.getRecipe());
 		Recipe recipeMainMeal = crm();
-		textAreaMain.append(recipeMainMeal.getName() + "\n");
+		textAreaMain.append(recipeMainMeal.getName().toUpperCase() + "\n");
 		textAreaMain.append(recipeMainMeal.getRecipe());
 		Recipe recipeDessert = crd();
-		textAreaDessert.append(recipeDessert.getName()+ "\n");
+		textAreaDessert.append(recipeDessert.getName().toUpperCase()+ "\n");
 		textAreaDessert.append(recipeDessert.getRecipe());
 		
 		
@@ -99,7 +99,7 @@ public class CreateMenuPage extends JFrame{
 				recipeStarter.setName(changedRecipe.getName());
 				recipeStarter.setRecipe(changedRecipe.getRecipe());
 				textAreaStarter.setText("");
-				textAreaStarter.append(recipeStarter.getName() + "\n");
+				textAreaStarter.append(recipeStarter.getName().toUpperCase() + "\n");
 				textAreaStarter.append(recipeStarter.getRecipe());
 			}
 		});
@@ -114,7 +114,7 @@ public class CreateMenuPage extends JFrame{
 				recipeDessert.setName(changedRecipe.getName());
 				recipeDessert.setRecipe(changedRecipe.getRecipe());
 				textAreaDessert.setText("");
-				textAreaDessert.append(recipeDessert.getName() + "\n");
+				textAreaDessert.append(recipeDessert.getName().toUpperCase() + "\n");
 				textAreaDessert.append(recipeDessert.getRecipe());
 			}
 		});
@@ -128,7 +128,7 @@ public class CreateMenuPage extends JFrame{
 				recipeMainMeal.setName(changedRecipe.getName());
 				recipeMainMeal.setRecipe(changedRecipe.getRecipe());
 				textAreaMain.setText("");
-				textAreaMain.append(recipeMainMeal.getName() + "\n");
+				textAreaMain.append(recipeMainMeal.getName().toUpperCase() + "\n");
 				textAreaMain.append(recipeMainMeal.getRecipe());
 			}
 		});

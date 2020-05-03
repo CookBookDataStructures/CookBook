@@ -65,7 +65,7 @@ public class LikedLinkedList {
 	
 	}
 	
-	private Node find(String target) {
+	public Node find(String target) {
 		Node position = first;
 		String itemAtPosition;
 		while (position != null) {

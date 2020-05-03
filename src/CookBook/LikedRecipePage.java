@@ -27,7 +27,7 @@ import javax.swing.event.ListSelectionListener;
 public class LikedRecipePage extends JFrame{
 	
 	public LikedRecipePage() {
-		getContentPane().setBackground(new Color(255, 228, 181));
+	getContentPane().setBackground(new Color(255, 228, 181));
 	setTitle("Cook-Book");
 	setVisible(true);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,28 +42,42 @@ public class LikedRecipePage extends JFrame{
 	scroll = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     scroll.setBounds(210, 72, 193, 213);
     getContentPane().add(scroll);
-	
+    	
 	JButton btnDetails = new JButton("See Details");
 	btnDetails.setBackground(new Color(135, 206, 250));
 	btnDetails.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			list.addListSelectionListener(new ListSelectionListener() {
-
-				@Override
-				public void valueChanged(ListSelectionEvent arg0) {
-					int index = list.getSelectedIndex();
-					if(index != -1) {
-						list.getSelectedValue().toString();
-						
-					}
-					else
-						JOptionPane.showMessageDialog(null, "Nothing has selected!");
-					
-				}
-				
-			});
+			String nameSelected = null;
+			String recipeSelected = null;
+			int index = list.getSelectedIndex();
+			if(index != -1) {
+				String name = list.getSelectedValue().toString();
+				Node selected = Main.likedList.find(name);
+				Recipe recipe = selected.recipe;
+				nameSelected = recipe.getName();
+				recipeSelected = recipe.getRecipe();
+				System.out.println(recipe.getName());
+				System.out.println(recipe.getRecipe());
+			}
+			else
+				JOptionPane.showMessageDialog(null, "Nothing has selected!");	
 			
-		}
+			SeeDetails seeDetailsPage = new SeeDetails();
+			JTextArea textArea = new JTextArea();
+			textArea.setEditable(false);
+			textArea.setLineWrap(true);
+			textArea.setWrapStyleWord(true);
+			
+			textArea.append(nameSelected + "\n");
+			textArea.append(recipeSelected + "\n");
+			
+			JScrollPane scroll = new JScrollPane(textArea);
+			scroll = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		    scroll.setBounds(155, 38, 250, 200);
+		    getContentPane().add(scroll);
+		    seeDetailsPage.add(scroll);
+
+		}		
 	});
 	btnDetails.setBounds(440, 72, 140, 47);
 	getContentPane().add(btnDetails);
