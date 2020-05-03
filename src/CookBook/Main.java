@@ -47,8 +47,6 @@ public class Main {
            e.printStackTrace();
        }
 		
-		
-		
 		try{
 			 FileReader fileReader =  new FileReader("saveMainMeal.txt");
 			
@@ -108,19 +106,20 @@ public class Main {
 		try {
 		FileReader fileReader = new FileReader("saveLiked.txt");
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
-		StringBuffer sBuffer = new StringBuffer();
-		String line;
-		while((line=bufferedReader.readLine())!=null){
-			sBuffer.append(line);
-			Recipe r = new Recipe(line, line, line);
-			likedList.insertAtFront(r);
-			sBuffer.append("\n");
+		while((line = bufferedReader.readLine()) != null) {
 			
-		}
-		fileReader.close();
-		System.out.println("liked list here:");
-		likedList.outputList();
-
+			String[] parts = line.split("=");
+			
+				Recipe recipe = new Recipe();
+				for (int i = 0; i < parts.length/3; i = i+3) {
+					recipe.setName(parts[i]);
+					recipe.setRecipe(parts[i+1]);
+					recipe.setType(parts[i+2]);
+					likedList.insertAtFront(recipe);
+				}
+				
+				likedList.outputList();
+			}fileReader.close();
 		}
 		catch(IOException e3) {
 		  e3.printStackTrace();	

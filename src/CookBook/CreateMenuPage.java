@@ -32,13 +32,28 @@ public class CreateMenuPage extends JFrame{
 	JTextArea textAreaMain = new JTextArea();
 	
 	JButton btnChangeStarter = new JButton("Change it");
+	JButton btnChangeMain = new JButton("Change it");
+	JButton btnChangeDessert = new JButton("Change it");
+
+
 	
 	
 	public CreateMenuPage() {
-				
-		Recipe recipeStarter = new Recipe("aa","ss","ff");
-		Recipe recipeMainMeal = new Recipe("dd", "dd", "d");
-		Recipe recipeDessert = new Recipe("j","j","j");
+		
+		
+		Recipe recipeStarter = crs();
+		textAreaStarter.append(recipeStarter.getName() + "\n");
+		textAreaStarter.append(recipeStarter.getRecipe());
+		Recipe recipeMainMeal = crm();
+		textAreaMain.append(recipeMainMeal.getName() + "\n");
+		textAreaMain.append(recipeMainMeal.getRecipe());
+		Recipe recipeDessert = crd();
+		textAreaDessert.append(recipeDessert.getName()+ "\n");
+		textAreaDessert.append(recipeDessert.getRecipe());
+		
+;
+
+
 		
 		getContentPane().setBackground(new Color(255, 222, 173));
 		setTitle("Cook-Book");
@@ -49,39 +64,50 @@ public class CreateMenuPage extends JFrame{
 		getContentPane().setLayout(null);
 		
 		TitledBorder titleStarter = new TitledBorder("Starter:");
-		//JTextArea textAreaStarter = new JTextArea();
 		textAreaStarter.setBounds(131, 81, 138, 218);
 		getContentPane().add(textAreaStarter);
 		textAreaStarter.setBorder(titleStarter);
 		
+		
 		TitledBorder titleDessert = new TitledBorder("Dessert:");
-		//JTextArea textAreaDessert = new JTextArea();
 		textAreaDessert.setBounds(501, 81, 138, 218);
 		getContentPane().add(textAreaDessert);
 		textAreaDessert.setBorder(titleDessert);
 		
-		Vector<String> v = new Vector<String>(); 
-		JList<String> recipe = new JList<>(v);
-		textAreaDessert.append(recipeDessert.getName() + recipeDessert.getRecipe());
-		Main.bstDessert.inorderTraversal();
 		
 		TitledBorder titleMain = new TitledBorder("Main Meal:");
-		//JTextArea textAreaMain = new JTextArea();
 		textAreaMain.setBounds(321, 81, 138, 218);
 		getContentPane().add(textAreaMain);
 		textAreaMain.setBorder(titleMain);
 		
-		//JButton btnChangeStarter = new JButton("Change it");
+		
+		btnChangeStarter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				createRandomStarter();
+				changeStarter();
+			}
+		});
 		btnChangeStarter.setBackground(new Color(255, 250, 205));
 		btnChangeStarter.setBounds(141, 49, 115, 29);
 		getContentPane().add(btnChangeStarter);
 		
-		JButton btnChangeDessert = new JButton("Change it");
+		
+		btnChangeDessert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createRandomDessert();
+				changeDessert();
+			}
+		});
 		btnChangeDessert.setBackground(new Color(255, 250, 205));
 		btnChangeDessert.setBounds(511, 49, 115, 29);
 		getContentPane().add(btnChangeDessert);
 		
-		JButton btnChangeMain = new JButton("Change it");
+		btnChangeMain.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createRandomMain();
+				changeMain();
+			}
+		});
 		btnChangeMain.setBackground(new Color(255, 250, 205));
 		btnChangeMain.setBounds(331, 49, 115, 29);
 		getContentPane().add(btnChangeMain);
@@ -89,10 +115,10 @@ public class CreateMenuPage extends JFrame{
 		JButton btnLikeStarter = new JButton("Like ");
 		btnLikeStarter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Main.likedList.insertAtFront(recipeStarter);
+			Main.likedList.insertAtFront(recipeStarter);
 				try {
 					FileWriter writer = new FileWriter("saveLiked.txt", true);
-					writer.write(recipeStarter.getName() + "\r\n");
+					writer.write(recipeStarter.getName() + "=" + recipeStarter.getRecipe() + recipeStarter.getType() + "\r\n");
 					writer.close();
 				}
 				catch(IOException e) {
@@ -111,7 +137,7 @@ public class CreateMenuPage extends JFrame{
 				Main.likedList.insertAtFront(recipeMainMeal);
 				try {
 					FileWriter writer = new FileWriter("saveLiked.txt", true);
-					writer.write(recipeMainMeal.getName() + "\r\n");
+					writer.write(recipeMainMeal.getName() + "=" + recipeMainMeal.getRecipe() + "=" + recipeMainMeal.getType() +"\r\n");
 					writer.close();
 				}
 				catch(IOException e1) {
@@ -131,7 +157,7 @@ public class CreateMenuPage extends JFrame{
 				Main.likedList.insertAtFront(recipeDessert);
 				try {
 					FileWriter writer = new FileWriter("saveLiked.txt", true);
-					writer.write(recipeDessert.getName() + "\r\n");
+					writer.write(recipeDessert.getName() + "=" + recipeDessert.getRecipe() + "=" + recipeDessert.getType() +"\r\n");
 					writer.close();
 				}
 				catch(IOException e2) {
@@ -160,29 +186,109 @@ public class CreateMenuPage extends JFrame{
 		btnGoBack.setBounds(11, 16, 115, 51);
 		getContentPane().add(btnGoBack);
 		
-		textAreaStarter.setText ("");
-		textAreaDessert.setText("");
-		textAreaMain.setText("");
-		
-	    
-	    
+	}	
+	
+	public String createRandomChar() {
+			
+			String s = "";
+			
+			String alphabet= "abcdefghijklmnopqrstuvwxyz";
+		    
+		    Random random = new Random();
+			
+		    for (int i = 0; i < 1; i++) {
+		      char c = alphabet.charAt(random.nextInt(26));
+		      s+=c;
+		    }
+	        return s;
+		}
+	
+	private void createRandomStarter() {
+        
+        Recipe randomStarter = Main.bstStarter.search(Main.bstStarter.getRoot(), this.createRandomChar());
+       
+        if(randomStarter != null) { 
+        String recipeName = randomStarter.getName();
+        String recipe = randomStarter.getRecipe();
+        textAreaStarter.append(recipeName + "\n");
+        textAreaStarter.append(recipe + "\n");
+        }
+        
+        else
+        	createRandomStarter();	
 	}
+
+
+	private void createRandomMain() {
+        Recipe randomMain = Main.bstMainMeal.search(Main.bstMainMeal.getRoot(), this.createRandomChar());
+        if(randomMain != null) {
+	        String recipeName = randomMain.getName();
+	        String recipe = randomMain.getRecipe();
+	        textAreaMain.append(recipeName + "\n");
+	        textAreaMain.append(recipe + "\n");
+        }
+        else
+        	createRandomMain();	
+	}
+	
+	private Recipe crs() {
+		Recipe randomStarter = new Recipe();
+		do {
+			 randomStarter = Main.bstStarter.search(Main.bstStarter.getRoot(), this.createRandomChar());
+		}while(randomStarter == null);
+		
+		return randomStarter;
+	}
+	
+	private Recipe crm() {
+		Recipe randomMainMeal = new Recipe();
+		do {
+			 randomMainMeal = Main.bstMainMeal.search(Main.bstMainMeal.getRoot(), this.createRandomChar());
+		}while(randomMainMeal == null);
+		
+		return randomMainMeal;
+	}
+	
+	private Recipe crd() {
+		Recipe randomDessertt = new Recipe();
+		do {
+			 randomDessertt = Main.bstDessert.search(Main.bstDessert.getRoot(), this.createRandomChar());
+		}while(randomDessertt == null);
+		
+		return randomDessertt;
+	}
+
+	
+	private void createRandomDessert() {
+        Recipe randomDessert = Main.bstDessert.search(Main.bstDessert.getRoot(), this.createRandomChar());
+        
+        if(randomDessert != null) {
+        	String recipeName = randomDessert.getName();
+            String recipe = randomDessert.getRecipe();
+        	textAreaDessert.append(recipeName + "\n");
+        	textAreaDessert.append(recipe + "\n");
+        	}
+        
+        else
+        	createRandomDessert();	
+   
+	}
+	
+	
 	private void changeStarter() {
-		Random rand = new Random(); 
-		int rand_int1 = rand.nextInt(2);
-		System.out.print(rand_int1);
-		
-		//Main.bstStarter.find(rand_int1);
-		textAreaStarter.append("");
-		
-//			if(rand_int1 == AddRecipePage.bst1.getRoot().recipe.getId()) {
-//				System.out.print(AddRecipePage.bst1.getRoot().recipe.getName());
-//				System.out.print(rand_int1);
-//			}
-	
-		
-		//System.out.print(AddRecipePage.bst1.getSize() + "\r\n");
+		textAreaStarter.setText("");
+		createRandomStarter();
 	}
 	
+	private void changeMain() {
+		textAreaMain.setText("");
+		createRandomMain();
+	}
+	private void changeDessert() {
+		textAreaDessert.setText("");
+		createRandomDessert();
+	}
+
+
 	
 }

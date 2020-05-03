@@ -94,79 +94,64 @@ public class AddRecipePage extends JFrame{
 					if(newRecipe.getType() == "Starter") {
 						Main.bstStarter.insert(newRecipe);
 						Main.bstStarter.inorderTraversal();
-						newRecipe.setId(Main.bstStarter.getSize());
 						try {
 						FileWriter writer = new FileWriter("saveStarter.txt", true);
-						writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ " = " +newRecipe.getId()+ "\r\n");
+						writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ "\r\n");
 						writer.close();
 						}
 					catch(IOException e) {
 							e.printStackTrace();
 						}
-						System.out.println("id:" + newRecipe.getId() + "\r\n");
-
-						
 					} 
 					
 					else if(newRecipe.getType() == "Main Meal") {
 						Main.bstMainMeal.insert(newRecipe);
 						Main.bstMainMeal.inorderTraversal();
-						newRecipe.setId(Main.bstMainMeal.getSize());
 							try {
 							FileWriter writer = new FileWriter("saveMainMeal.txt", true);
-							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ " = " +newRecipe.getId()+ "\r\n");
+							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ "\r\n");
 							writer.close();
 							}
 						catch(IOException e) {
 								e.printStackTrace();
 							}
-							System.out.println("id:" + newRecipe.getId() + "\r\n");
-
 					}
+					
 					else {
 						if(newRecipe.getType() == "Dessert") {
 							Main.bstDessert.insert(newRecipe);
 							Main.bstDessert.inorderTraversal();
-							newRecipe.setId(Main.bstDessert.getSize());
 							try {
 							FileWriter writer = new FileWriter("saveDessert.txt", true);
-							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ " = " +newRecipe.getId()+ "\r\n");
+							writer.write(newRecipe.getName() + " = " +newRecipe.getRecipe()+ "\r\n");
 							writer.close();
 							}
 						catch(IOException e) {
 								e.printStackTrace();
 							}
-							
-							System.out.println("id:" + newRecipe.getId() + "\r\n");
 						}
 					}
 					
 				JOptionPane.showMessageDialog(null, "Recipe is added!");
-							
-						
+											
 			}
 				txtRecipeName.setText("");
 				txtRecipe.setText("");
 				cmbRecipeType.setSelectedIndex(0);
 			}			
-			
-			
 		});
 		
 		btnAddRecipe.setBackground(new Color(240, 255, 255));
 		btnAddRecipe.setBounds(336, 407, 111, 49);
 		getContentPane().add(btnAddRecipe);
 		btnAddRecipe.setFont(new Font("Consolas", Font.BOLD, 20));
-				
-				
+						
 		JLabel lblRecipeType= new JLabel("Selecet Type of the meal: ");
 		lblRecipeType.setBounds(153, 342, 208, 17);
 		getContentPane().add(lblRecipeType);
 		lblRecipeType.setHorizontalAlignment(JLabel.LEADING);
 		lblRecipeType.setFont(new Font("Consolas", Font.PLAIN, 14));
-				
-				
-				
+						
 		JButton btnGoBack = new JButton("Go Back");
 		btnGoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -177,8 +162,6 @@ public class AddRecipePage extends JFrame{
 		});
 		btnGoBack.setBounds(29, 36, 117, 55);
 		getContentPane().add(btnGoBack);
-		
-		
 	}
 	
-	}
+}

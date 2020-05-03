@@ -35,36 +35,13 @@ public class LikedRecipePage extends JFrame{
 	setLocationRelativeTo(null);
 	getContentPane().setLayout(null);
 	
-		/*
-		 * LikedLinkedList linkedList = new LikedLinkedList(); try { FileReader reader =
-		 * new FileReader("saveLiked.txt"); BufferedReader bReader = new
-		 * BufferedReader(reader); StringBuffer sBuffer = new StringBuffer(); String
-		 * line; while((line=bReader.readLine())!=null){ sBuffer.append(line); Recipe r
-		 * = new Recipe(line, line, line); linkedList.insertAtFront(r);
-		 * sBuffer.append("\n");
-		 * 
-		 * } reader.close(); System.out.println(sBuffer.toString());
-		 * linkedList.outputList();
-		 * 
-		 * 
-		 * } catch(IOException e) { e.printStackTrace(); }
-		 */
-	
+		
 	
 	JList list = new JList(Main.likedList.toList());
 	list.setBounds(210, 72, 193, 213);
 	getContentPane().add(list);
 	list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		/*
-		 * list.addListSelectionListener(new ListSelectionListener() {
-		 * 
-		 * @Override public void valueChanged(ListSelectionEvent arg0) {
-		 * 
-		 * 
-		 * }
-		 * 
-		 * });
-		 */
+		
 	
 	
 	

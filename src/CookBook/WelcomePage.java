@@ -35,6 +35,7 @@ public class WelcomePage extends JFrame {
 		btnCreateTodaysMenu.setBounds(162, 113, 288, 45);
 		getContentPane().add(btnCreateTodaysMenu);
 		
+		
 		JButton btnGoToLiked = new JButton("Go To Liked List");
 		btnGoToLiked.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -45,12 +46,14 @@ public class WelcomePage extends JFrame {
 		btnGoToLiked.setBounds(162, 196, 288, 45);
 		getContentPane().add(btnGoToLiked);
 		
+		
 		JButton btnAddNewRecipe = new JButton("Add New Recipe");
 		btnAddNewRecipe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddRecipePage addRecipeWindow = new AddRecipePage();
 			}
 		});
+		
 		btnAddNewRecipe.setBackground(new Color(176, 224, 230));
 		btnAddNewRecipe.setBounds(162, 272, 288, 45);
 		getContentPane().add(btnAddNewRecipe);
