@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollBar;
 
 public class CreateMenuPage extends JFrame{
 	
@@ -60,19 +61,37 @@ public class CreateMenuPage extends JFrame{
 		getContentPane().setLayout(null);
 		
 		TitledBorder titleStarter = new TitledBorder("Starter:");
-		textAreaStarter.setBounds(131, 81, 138, 218);
-		getContentPane().add(textAreaStarter);
+		textAreaStarter.setEditable(false);
 		textAreaStarter.setBorder(titleStarter);
+		textAreaStarter.setLineWrap(true);
+	    textAreaStarter.setWrapStyleWord(true);
+	    JScrollPane scroll = new JScrollPane(textAreaStarter);
+	    scroll = new JScrollPane(textAreaStarter, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	    scroll.setBounds(131, 81, 138, 218);
+	    getContentPane().add(scroll);
+
 		
 		TitledBorder titleDessert = new TitledBorder("Dessert:");
-		textAreaDessert.setBounds(501, 81, 138, 218);
+		textAreaMain.setEditable(false);
 		getContentPane().add(textAreaDessert);
 		textAreaDessert.setBorder(titleDessert);
+		textAreaDessert.setLineWrap(true);
+	    textAreaDessert.setWrapStyleWord(true);
+	    JScrollPane scroll_1= new JScrollPane(textAreaDessert);
+	    scroll_1 = new JScrollPane(textAreaDessert, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	    scroll_1.setBounds(501, 81, 138, 218);
+	    getContentPane().add(scroll_1);
 		
 		TitledBorder titleMain = new TitledBorder("Main Meal:");
-		textAreaMain.setBounds(321, 81, 138, 218);
+		textAreaDessert.setEditable(false);
 		getContentPane().add(textAreaMain);
 		textAreaMain.setBorder(titleMain);
+		textAreaMain.setLineWrap(true);
+	    textAreaMain.setWrapStyleWord(true);
+	    JScrollPane scroll_2 = new JScrollPane(textAreaMain);
+	    scroll_2 = new JScrollPane(textAreaMain, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	    scroll_2.setBounds(320, 81, 138, 218);
+	    getContentPane().add(scroll_2);
 		
 		btnChangeStarter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -232,6 +251,4 @@ public class CreateMenuPage extends JFrame{
 		
 		return randomDessertt;
 	}
-
-	
 }

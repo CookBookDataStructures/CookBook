@@ -36,14 +36,11 @@ public class AddRecipePage extends JFrame{
 		setSize(744, 547);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
-		
-				
-				
+			
 	    JLabel lblHeader = new JLabel("ADD NEW RECIPE!");
 		lblHeader.setBounds(301, 37, 226, 27);
 		getContentPane().add(lblHeader);
-		lblHeader.setFont(new Font("Consolas", Font.PLAIN, 22));
-				
+		lblHeader.setFont(new Font("Consolas", Font.PLAIN, 22));		
 				
 		JLabel lblRecipeName = new JLabel("Recipe Name: ");
 		getContentPane().add(lblRecipeName);
@@ -55,15 +52,12 @@ public class AddRecipePage extends JFrame{
 		txtRecipeName.setBounds(283, 123, 289, 33);
 		txtRecipeName.setColumns(12);		
 				
-				
 		txtRecipe.setLineWrap(true);
 		txtRecipe.setWrapStyleWord(true);
-		txtRecipe.setPreferredSize(new Dimension(200,70));
-				
-		JScrollPane scrollPane = new JScrollPane(txtRecipe);
-		scrollPane.setBounds(283, 204, 289, 122);
-		getContentPane().add(scrollPane);
-		scrollPane.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
+		JScrollPane scroll = new JScrollPane(txtRecipe);
+		scroll = new JScrollPane(txtRecipe, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	    scroll.setBounds(283, 204, 289, 122);
+	    getContentPane().add(scroll);
 				
 		getContentPane().add(cmbRecipeType);
 		cmbRecipeType.addItem("Choose one");

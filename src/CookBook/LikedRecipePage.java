@@ -35,15 +35,13 @@ public class LikedRecipePage extends JFrame{
 	setLocationRelativeTo(null);
 	getContentPane().setLayout(null);
 	
-		
-	
 	JList list = new JList(Main.likedList.toList());
-	list.setBounds(210, 72, 193, 213);
 	getContentPane().add(list);
 	list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
-	
-	
+	JScrollPane scroll = new JScrollPane(list);
+	scroll = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    scroll.setBounds(210, 72, 193, 213);
+    getContentPane().add(scroll);
 	
 	JButton btnDetails = new JButton("See Details");
 	btnDetails.setBackground(new Color(135, 206, 250));
@@ -70,8 +68,6 @@ public class LikedRecipePage extends JFrame{
 	btnDetails.setBounds(440, 72, 140, 47);
 	getContentPane().add(btnDetails);
 	
-		
-		
 	JButton btnDeleteRecipe = new JButton("Delete Recipe");
 	btnDeleteRecipe.setBackground(new Color(135, 206, 250));
 	btnDeleteRecipe.setBounds(440, 157, 140, 47);
@@ -97,13 +93,6 @@ public class LikedRecipePage extends JFrame{
 	lblListOfLiked.setFont(new Font("Consolas", Font.BOLD, 22));
 	lblListOfLiked.setBounds(167, 16, 282, 20);
 	getContentPane().add(lblListOfLiked);
-	
-	
-	
-	
-	
-	
-	
 	
 	}
 }

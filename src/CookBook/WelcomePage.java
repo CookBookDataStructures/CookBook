@@ -29,6 +29,8 @@ public class WelcomePage extends JFrame {
 		btnCreateTodaysMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CreateMenuPage createMenuWindow = new CreateMenuPage();
+				setVisible(false);
+				createMenuWindow.setVisible(true);
 			}
 		});
 		btnCreateTodaysMenu.setBackground(new Color(176, 224, 230));
@@ -40,6 +42,8 @@ public class WelcomePage extends JFrame {
 		btnGoToLiked.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LikedRecipePage likedRecipeWindow = new LikedRecipePage();
+				setVisible(false);
+				likedRecipeWindow.setVisible(true);
 			}
 		});
 		btnGoToLiked.setBackground(new Color(176, 224, 230));
@@ -51,6 +55,8 @@ public class WelcomePage extends JFrame {
 		btnAddNewRecipe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddRecipePage addRecipeWindow = new AddRecipePage();
+				setVisible(false);
+				addRecipeWindow.setVisible(true);
 			}
 		});
 		
